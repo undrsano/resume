@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>Максим</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #10b981;
+            --neon: #00f0ff;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--neon), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            background-color: #1e293b;
+            border: 1px solid #334155;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 240, 255, 0.1), 0 4px 6px -2px rgba(0, 240, 255, 0.05);
+            border-color: var(--neon);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #334155;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--neon), var(--primary));
+            transition: width 1s ease-in-out;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 24px;
+            height: 100%;
+            width: 2px;
+            background-color: #334155;
+        }
+        
+        .neon-shadow {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+        
+        .avatar-border {
+            border: 3px solid var(--neon);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="animate__animated animate__fadeInLeft">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 rounded-full overflow-hidden avatar-border mr-4">
+                        <img src="https://i.pinimg.com/736x/76/cd/d4/76cdd4645e909b1ab204af11d28459a0.jpg" alt="Максим" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold">Максим</h2>
+                        <p class="text-slate-400">Python Developer</p>
+                    </div>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+                    Привет, я <span class="gradient-text">Python разработчик</span>
+                </h1>
+                <p class="text-lg text-slate-400 mb-8">
+                    С 5+ годами опыта в создании ботов, веб-приложений и автоматизации процессов. 
+                    Начинал изучать Python с 13 лет и продолжаю совершенствоваться каждый день.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-indigo-600 to-indigo-800 hover:from-indigo-700 hover:to-indigo-900 text-white font-medium rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg neon-shadow">
+                        Контакты
+                    </a>
+                    <a href="#projects" class="px-6 py-3 border border-indigo-600 text-indigo-400 hover:bg-indigo-900/30 font-medium rounded-lg transition-all duration-300 neon-shadow">
+                        Мои проекты
+                    </a>
+                </div>
+            </div>
+            <div class="animate__animated animate__fadeInRight flex justify-center">
+                <div class="relative w-64 h-64 sm:w-80 sm:h-80">
+                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/50 to-emerald-900/50 rounded-full opacity-20 blur-xl"></div>
+                    <div class="relative w-full h-full flex items-center justify-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python Logo" class="w-3/4 floating">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Мои <span class="gradient-text">Навыки</span></h2>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+                За годы работы я освоил множество технологий и продолжаю изучать новые.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="p-6 rounded-xl shadow-md card-hover animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-indigo-900/30 rounded-lg flex items-center justify-center mr-4">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-xl font-semibold">Python</h3>
+                </div>
+                <p class="text-slate-400 mb-4">
+                    7 лет изучения, 5 лет коммерческого опыта. Разработка ботов, веб-приложений, скриптов.
+                </p>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 95%"></div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">FastAPI</span>
+                    <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">Django</span>
+                    <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">Telegram Bot</span>
+                    <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">Discord Bot</span>
+                </div>
+            </div>
+            
+            <div class="p-6 rounded-xl shadow-md card-hover animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center mr-4">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="Web" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-xl font-semibold">Веб-разработка</h3>
+                </div>
+                <p class="text-slate-400 mb-4">
+                    Backend и Frontend разработка. Опыт работы с различными фреймворками и базами данных.
+                </p>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%"></div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-sm rounded-full">HTML/CSS</span>
+                    <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-sm rounded-full">Tailwind</span>
+                    <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-sm rounded-full">JavaScript</span>
+                    <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-sm rounded-full">Vue.js</span>
+                </div>
+            </div>
+            
+            <div class="p-6 rounded-xl shadow-md card-hover animate__animated animate__fadeInUp" data-wow-delay="0.3s">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-emerald-900/30 rounded-lg flex items-center justify-center mr-4">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2772/2772128.png" alt="Database" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-xl font-semibold">Базы данных</h3>
+                </div>
+                <p class="text-slate-400 mb-4">
+                    Работа с различными СУБД: от простых SQLite до масштабируемых PostgreSQL и MongoDB.
+                </p>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%"></div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="px-3 py-1 bg-emerald-900/30 text-emerald-400 text-sm rounded-full">PostgreSQL</span>
+                    <span class="px-3 py-1 bg-emerald-900/30 text-emerald-400 text-sm rounded-full">MongoDB</span>
+                    <span class="px-3 py-1 bg-emerald-900/30 text-emerald-400 text-sm rounded-full">SQLite</span>
+                    <span class="px-3 py-1 bg-emerald-900/30 text-emerald-400 text-sm rounded-full">ORM</span>
+                </div>
+            </div>
+            
+            <div class="p-6 rounded-xl shadow-md card-hover animate__animated animate__fadeInUp" data-wow-delay="0.4s">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-amber-900/30 rounded-lg flex items-center justify-center mr-4">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968381.png" alt="JS" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-xl font-semibold">Другие языки</h3>
+                </div>
+                <p class="text-slate-400 mb-4">
+                    Опыт работы с JavaScript, TypeScript, Java и Dart (Flutter).
+                </p>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 50%"></div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="px-3 py-1 bg-amber-900/30 text-amber-400 text-sm rounded-full">JavaScript</span>
+                    <span class="px-3 py-1 bg-amber-900/30 text-amber-400 text-sm rounded-full">TypeScript</span>
+                    <span class="px-3 py-1 bg-amber-900/30 text-amber-400 text-sm rounded-full">Java</span>
+                    <span class="px-3 py-1 bg-amber-900/30 text-amber-400 text-sm rounded-full">Dart</span>
+                </div>
+            </div>
+            
+            <div class="p-6 rounded-xl shadow-md card-hover animate__animated animate__fadeInUp" data-wow-delay="0.5s">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-red-900/30 rounded-lg flex items-center justify-center mr-4">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968667.png" alt="Flutter" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-xl font-semibold">Мобильная разработка</h3>
+                </div>
+                <p class="text-slate-400 mb-4">
+                    Участие в разработке мобильного приложения на Flutter (клон Tinder).
+                </p>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 30%"></div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="px-3 py-1 bg-red-900/30 text-red-400 text-sm rounded-full">Flutter</span>
+                    <span class="px-3 py-1 bg-red-900/30 text-red-400 text-sm rounded-full">Dart</span>
+                    <span class="px-3 py-1 bg-red-900/30 text-red-400 text-sm rounded-full">Mobile</span>
+                </div>
+            </div>
+            
+            <div class="p-6 rounded-xl shadow-md card-hover animate__animated animate__fadeInUp" data-wow-delay="0.6s">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-indigo-900/30 rounded-lg flex items-center justify-center mr-4">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968520.png" alt="Git" class="w-8 h-8">
+                    </div>
+                    <h3 class="text-xl font-semibold">Инструменты</h3>
+                </div>
+                <p class="text-slate-400 mb-4">
+                    Современные инструменты разработки, контроль версий и CI/CD.
+                </p>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 75%"></div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">Git</span>
+                    <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">Docker</span>
+                    <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">Linux</span>
+                    <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">VS Code</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-slate-800/50">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Мой <span class="gradient-text">Опыт</span></h2>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+                Мой путь в программировании с 13 лет и профессиональный опыт.
+            </p>
+        </div>
+        
+        <div class="max-w-3xl mx-auto">
+            <div class="space-y-8">
+                <div class="relative timeline-item pl-8">
+                    <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-indigo-600 border-4 border-indigo-900/30 neon-shadow"></div>
+                    <div class="p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                            <h3 class="text-xl font-semibold">Начало изучения Python</h3>
+                            <span class="text-sm text-slate-400 bg-slate-700/50 px-3 py-1 rounded-full">2016 - 2025</span>
+                        </div>
+                        <p class="text-slate-400 mb-4">
+                            Начал изучать Python в 13 лет. Сначала основы, затем более сложные концепции: ООП, асинхронное программирование, веб-разработку.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">Основы Python</span>
+                            <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">ООП</span>
+                            <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">Алгоритмы</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative timeline-item pl-8">
+                    <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-emerald-600 border-4 border-emerald-900/30 neon-shadow"></div>
+                    <div class="p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                            <h3 class="text-xl font-semibold">Первые проекты</h3>
+                            <span class="text-sm text-slate-400 bg-slate-700/50 px-3 py-1 rounded-full">2018</span>
+                        </div>
+                        <p class="text-slate-400 mb-4">
+                            Разработка первых Telegram и Discord ботов, скриптов для автоматизации. Изучение веб-разработки (HTML, CSS, JavaScript).
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-emerald-900/30 text-emerald-400 text-sm rounded-full">Telegram Bot</span>
+                            <span class="px-3 py-1 bg-emerald-900/30 text-emerald-400 text-sm rounded-full">Discord Bot</span>
+                            <span class="px-3 py-1 bg-emerald-900/30 text-emerald-400 text-sm rounded-full">Automation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative timeline-item pl-8">
+                    <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-purple-600 border-4 border-purple-900/30 neon-shadow"></div>
+                    <div class="p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                            <h3 class="text-xl font-semibold">Профессиональный опыт</h3>
+                            <span class="text-sm text-slate-400 bg-slate-700/50 px-3 py-1 rounded-full">2019 - 2025</span>
+                        </div>
+                        <p class="text-slate-400 mb-4">
+                            5+ лет коммерческого опыта (Заказы). Разработка ботов, веб-приложений на FastAPI и Django. Работа с различными базами данных.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-sm rounded-full">FastAPI</span>
+                            <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-sm rounded-full">Django</span>
+                            <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-sm rounded-full">PostgreSQL</span>
+                            <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-sm rounded-full">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative timeline-item pl-8">
+                    <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-amber-600 border-4 border-amber-900/30 neon-shadow"></div>
+                    <div class="p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                            <h3 class="text-xl font-semibold">Веб-разработка</h3>
+                            <span class="text-sm text-slate-400 bg-slate-700/50 px-3 py-1 rounded-full">2022</span>
+                        </div>
+                        <p class="text-slate-400 mb-4">
+                            Создание веб-приложений (backend и frontend). Опыт работы с Tailwind CSS, Vue.js, TypeScript.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-amber-900/30 text-amber-400 text-sm rounded-full">Tailwind</span>
+                            <span class="px-3 py-1 bg-amber-900/30 text-amber-400 text-sm rounded-full">Vue.js</span>
+                            <span class="px-3 py-1 bg-amber-900/30 text-amber-400 text-sm rounded-full">TypeScript</span>
+                            <span class="px-3 py-1 bg-amber-900/30 text-amber-400 text-sm rounded-full">Fullstack</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative timeline-item pl-8">
+                    <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-red-600 border-4 border-red-900/30 neon-shadow"></div>
+                    <div class="p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                            <h3 class="text-xl font-semibold">Мобильная разработка</h3>
+                            <span class="text-sm text-slate-400 bg-slate-700/50 px-3 py-1 rounded-full">2023</span>
+                        </div>
+                        <p class="text-slate-400 mb-4">
+                            Участие в разработке мобильного приложения на Flutter (клон Tinder). Изучение Dart и основ мобильной разработки.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-red-900/30 text-red-400 text-sm rounded-full">Flutter</span>
+                            <span class="px-3 py-1 bg-red-900/30 text-red-400 text-sm rounded-full">Dart</span>
+                            <span class="px-3 py-1 bg-red-900/30 text-red-400 text-sm rounded-full">Mobile App</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Мои <span class="gradient-text">Проекты</span></h2>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+                Некоторые из моих работ за последние годы.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="rounded-xl shadow-md overflow-hidden card-hover animate__animated animate__fadeIn">
+                <div class="h-48 bg-gradient-to-r from-indigo-900/50 to-indigo-800/70 flex items-center justify-center">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968801.png" alt="Telegram Bot" class="w-20 h-20">
+                </div>
+                <div class="p-6 bg-slate-800/50">
+                    <h3 class="text-xl font-semibold mb-2">Telegram Bot</h3>
+                    <p class="text-slate-400 mb-4">
+                        Многофункциональный бот с интеграцией внешних API, базой данных и админ-панелью.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">Python</span>
+                        <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">aiogram</span>
+                        <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rounded-xl shadow-md overflow-hidden card-hover animate__animated animate__fadeIn">
+                <div class="h-48 bg-gradient-to-r from-purple-900/50 to-purple-800/70 flex items-center justify-center">
+                    <img src="https://cdn.discordapp.com/avatars/1044490602798137404/89a0a8c17487318946a2675cfa656612.png?size=160" alt="Discord Bot" class="w-20 h-20">
+                </div>
+                <div class="p-6 bg-slate-800/50">
+                    <h3 class="text-xl font-semibold mb-2">Discord Bot</h3>
+                    <p class="text-slate-400 mb-4">
+                        Бот для модерации сервера с системой уровней, экономикой и мини-играми.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-sm rounded-full">Python</span>
+                        <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-sm rounded-full">discord.py</span>
+                        <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-sm rounded-full">nextcord</span>
+                        <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-sm rounded-full">DS.js</span>
+                        <span class="px-3 py-1 bg-purple-900/30 text-purple-400 text-sm rounded-full">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rounded-xl shadow-md overflow-hidden card-hover animate__animated animate__fadeIn">
+                <div class="h-48 bg-gradient-to-r from-emerald-900/50 to-teal-800/70 flex items-center justify-center">
+                    <img src="https://technomagicsky.ru/static/favicon.ico" alt="Web App" class="w-20 h-20">
+                </div>
+                <div class="p-6 bg-slate-800/50">
+                    <h3 class="text-xl font-semibold mb-2">Веб-приложение</h3>
+                    <p class="text-slate-400 mb-4">
+                        Полноценное веб-приложение с авторизацией, CRUD операциями и аналитикой.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-emerald-900/30 text-emerald-400 text-sm rounded-full">FastAPI</span>
+                        <span class="px-3 py-1 bg-emerald-900/30 text-emerald-400 text-sm rounded-full">Vue.js</span>
+                        <span class="px-3 py-1 bg-emerald-900/30 text-emerald-400 text-sm rounded-full">Tailwind</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rounded-xl shadow-md overflow-hidden card-hover animate__animated animate__fadeIn">
+                <div class="h-48 bg-gradient-to-r from-red-900/50 to-pink-800/70 flex items-center justify-center">
+                    <img src="https://i.pinimg.com/originals/6d/b1/59/6db159df526b6f5584902ebc21daca88.png" alt="Mobile App" class="w-20 h-20">
+                </div>
+                <div class="p-6 bg-slate-800/50">
+                    <h3 class="text-xl font-semibold mb-2">Мобильное приложение</h3>
+                    <p class="text-slate-400 mb-4">
+                        Клон Tinder с базовой функциональностью: карточки, свайпы, чат.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-red-900/30 text-red-400 text-sm rounded-full">Flutter</span>
+                        <span class="px-3 py-1 bg-red-900/30 text-red-400 text-sm rounded-full">Dart</span>
+                        <span class="px-3 py-1 bg-red-900/30 text-red-400 text-sm rounded-full">Firebase</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rounded-xl shadow-md overflow-hidden card-hover animate__animated animate__fadeIn">
+                <div class="h-48 bg-gradient-to-r from-amber-900/50 to-orange-800/70 flex items-center justify-center">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4299/4299956.png" alt="Automation" class="w-20 h-20">
+                </div>
+                <div class="p-6 bg-slate-800/50">
+                    <h3 class="text-xl font-semibold mb-2">Скрипты автоматизации</h3>
+                    <p class="text-slate-400 mb-4">
+                        Набор скриптов для автоматизации рутинных задач: парсинг, обработка данных и т.д.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-amber-900/30 text-amber-400 text-sm rounded-full">Python</span>
+                        <span class="px-3 py-1 bg-amber-900/30 text-amber-400 text-sm rounded-full">WebSocket</span>
+                        <span class="px-3 py-1 bg-amber-900/30 text-amber-400 text-sm rounded-full">Selenium</span>
+                        <span class="px-3 py-1 bg-amber-900/30 text-amber-400 text-sm rounded-full">BeautifulSoup</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rounded-xl shadow-md overflow-hidden card-hover animate__animated animate__fadeIn">
+                <div class="h-48 bg-gradient-to-r from-green-900/50 to-emerald-800/70 flex items-center justify-center">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968371.png" alt="Django" class="w-20 h-20">
+                </div>
+                <div class="p-6 bg-slate-800/50">
+                    <h3 class="text-xl font-semibold mb-2">Django Проект</h3>
+                    <p class="text-slate-400 mb-4">
+                        Веб-приложение на Django с авторизацией, CRUD и REST API.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-green-900/30 text-green-400 text-sm rounded-full">Django</span>
+                        <span class="px-3 py-1 bg-green-900/30 text-green-400 text-sm rounded-full">DRF</span>
+                        <span class="px-3 py-1 bg-green-900/30 text-green-400 text-sm rounded-full">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-slate-800/50">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Мои <span class="gradient-text">Контакты</span></h2>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+                Свяжитесь со мной через удобный для вас способ.
+            </p>
+        </div>
+        
+        <div class="max-w-3xl mx-auto">
+            <div class="space-y-6">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-indigo-900/30 flex items-center justify-center mr-4 neon-shadow">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-medium text-slate-200">GitHub</h4>
+                        <p class="text-slate-400">github.com/MaxDobp</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-900/30 flex items-center justify-center mr-4 neon-shadow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
+                            <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-medium text-slate-200">Discord</h4>
+                        <p class="text-slate-400">sanomanjiro</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-900/30 flex items-center justify-center mr-4 neon-shadow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-medium text-slate-200">Telegram</h4>
+                        <p class="text-slate-400">@MaxDobp</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12">
+                <h4 class="text-lg font-medium text-slate-200 mb-6 text-center">Социальные сети</h4>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://github.com/MaxDobp" class="w-12 h-12 rounded-full bg-indigo-900/30 flex items-center justify-center text-indigo-400 hover:bg-indigo-900/50 transition-colors neon-shadow">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </a>
+                    <a href="https://discord.com/channels/@me/345879945899278346" class="w-12 h-12 rounded-full bg-blue-900/30 flex items-center justify-center text-blue-400 hover:bg-blue-900/50 transition-colors neon-shadow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
+                            <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
+                        </svg>
+                    </a>
+                    <a href="https://t.me/MaxDobp" class="w-12 h-12 rounded-full bg-indigo-900/30 flex items-center justify-center text-indigo-400 hover:bg-indigo-900/50 transition-colors neon-shadow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 px-4 sm:px-6 lg:px-8 bg-slate-900/80 text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-lg font-medium">Python Developer</p>
+                    <p class="text-slate-400">© 2025 Все права защищены</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate__animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const animation = entry.target.getAttribute('data-animation');
+                        entry.target.classList.add('animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
